@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的项目导航</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: #0f0f1a;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+.bg-glow {
+  position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+.container {
+  max-width: 1100px; margin: 0 auto; padding: 40px 20px;
+  position: relative; z-index: 1;
+}
+header {
+  text-align: center; margin-bottom: 50px;
+}
+header h1 {
+  font-size: 2.4em; font-weight: 700;
+  background: linear-gradient(135deg, #6366f1, #06b6d4, #10b981);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 12px;
+}
+header p {
+  color: #888; font-size: 1.05em;
+}
+.category {
+  margin-bottom: 40px;
+}
+.category-title {
+  font-size: 1.15em; font-weight: 600; color: #888;
+  margin-bottom: 16px; padding-left: 4px;
+  display: flex; align-items: center; gap: 8px;
+}
+.category-title::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px;
+  text-decoration: none; color: inherit;
+  display: flex; align-items: flex-start; gap: 16px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(99,102,241,0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(99,102,241,0.15);
+}
+.card-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6em; flex-shrink: 0;
+}
+.card-body { flex: 1; min-width: 0; }
+.card-title {
+  font-size: 1.1em; font-weight: 600; color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.card-desc {
+  font-size: 0.88em; color: #888; line-height: 1.5;
+}
+.card-tag {
+  display: inline-block; margin-top: 10px;
+  font-size: 0.72em; padding: 3px 10px;
+  border-radius: 20px; font-weight: 500;
+}
+/* 配色方案 */
+.icon-blue { background: rgba(59,130,246,0.15); }
+.icon-green { background: rgba(16,185,129,0.15); }
+.icon-orange { background: rgba(249,115,22,0.15); }
+.icon-purple { background: rgba(139,92,246,0.15); }
+.icon-pink { background: rgba(236,72,153,0.15); }
+.icon-cyan { background: rgba(6,182,212,0.15); }
+.icon-red { background: rgba(239,68,68,0.15); }
+.icon-yellow { background: rgba(234,179,8,0.15); }
+
+.tag-game { background: rgba(139,92,246,0.15); color: #a78bfa; }
+.tag-edu { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+.tag-tool { background: rgba(59,130,246,0.15); color: #93c5fd; }
+.tag-doc { background: rgba(249,115,22,0.15); color: #fdba74; }
+.tag-report { background: rgba(6,182,212,0.15); color: #67e8f9; }
+
+footer {
+  text-align: center; margin-top: 60px; padding: 20px;
+  color: #555; font-size: 0.85em;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer a { color: #6366f1; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .container { padding: 24px 16px; }
+  header h1 { font-size: 1.8em; }
+  .grid { grid-template-columns: 1fr; }
+  .card { padding: 18px; }
+  .card-icon { width: 44px; height: 44px; font-size: 1.3em; }
+}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="container">
+
+<header>
+  <h1>🚀 我的项目导航</h1>
+  <p>所有已发布到公网的项目，一站直达</p>
+</header>
+
+<!-- 互动游戏 -->
+<div class="category">
+  <div class="category-title">🎮 互动游戏</div>
+  <div class="grid">
+    <a class="card" href="https://hbzhangmao.github.io/angry-birds/" target="_blank">
+      <div class="card-icon icon-red">🐦</div>
+      <div class="card-body">
+        <div class="card-title">愤怒的小鸟</div>
+        <div class="card-desc">8个角色独特技能，8个关卡逐步解锁，物理碰撞引擎，音效粒子特效齐全</div>
+        <span class="card-tag tag-game">游戏</span>
+      </div>
+    </a>
+    <a class="card" href="https://hbzhangmao.github.io/24point/" target="_blank">
+      <div class="card-icon icon-purple">🃏</div>
+      <div class="card-body">
+        <div class="card-title">24点游戏</div>
+        <div class="card-desc">三个难度，点击扑克牌和运算符拼算式，支持括号、提示、计时计分</div>
+        <span class="card-tag tag-game">游戏</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- 学习教育 -->
+<div class="category">
+  <div class="category-title">📚 学习教育</div>
+  <div class="grid">
+    <a class="card" href="https://hbzhangmao.github.io/poetry-game/" target="_blank">
+      <div class="card-icon icon-green">📖</div>
+      <div class="card-body">
+        <div class="card-title">古诗背诵游戏</div>
+        <div class="card-desc">小学1-6年级必背古诗，学一学、填一填、背一背三种模式，带拼音注释</div>
+        <span class="card-tag tag-edu">教育</span>
+      </div>
+    </a>
+    <a class="card" href="https://hbzhangmao.github.io/math-practice/" target="_blank">
+      <div class="card-icon icon-orange">🔢</div>
+      <div class="card-body">
+        <div class="card-title">寒假口算练习</div>
+        <div class="card-desc">小学三年级北师大版，28天每日一页A4，50道混合计算题+应用题，可打印PDF</div>
+        <span class="card-tag tag-edu">教育</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- 可视化 -->
+<div class="category">
+  <div class="category-title">🌌 可视化</div>
+  <div class="grid">
+    <a class="card" href="https://hbzhangmao.github.io/solar-system/" target="_blank">
+      <div class="card-icon icon-blue">🪐</div>
+      <div class="card-body">
+        <div class="card-title">太阳系模拟</div>
+        <div class="card-desc">Three.js 3D太阳系，地球公转月球绕转，日食月食模拟，鼠标交互缩放</div>
+        <span class="card-tag tag-tool">可视化</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- 技术文档 -->
+<div class="category">
+  <div class="category-title">📄 技术文档</div>
+  <div class="grid">
+    <a class="card" href="https://hbzhangmao.github.io/nanobot-tutorial/" target="_blank">
+      <div class="card-icon icon-cyan">🐈</div>
+      <div class="card-body">
+        <div class="card-title">NanoBot 实现原理</div>
+        <div class="card-desc">深度解析 NanoBot 架构，12个核心模块实现原理，含架构图和代码分析</div>
+        <span class="card-tag tag-doc">文档</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- 数据报告 -->
+<div class="category">
+  <div class="category-title">📊 数据报告</div>
+  <div class="grid">
+    <a class="card" href="https://hbzhangmao.github.io/github-daily-report/" target="_blank">
+      <div class="card-icon icon-yellow">📰</div>
+      <div class="card-body">
+        <div class="card-title">GitHub 日报 — NanoBot</div>
+        <div class="card-desc">HKUDS/nanobot 项目每日动态，自动抓取翻译，滚动10天窗口</div>
+        <span class="card-tag tag-report">日报</span>
+      </div>
+    </a>
+    <a class="card" href="https://hbzhangmao.github.io/github-daily-report/openclaw.html" target="_blank">
+      <div class="card-icon icon-yellow">📰</div>
+      <div class="card-body">
+        <div class="card-title">GitHub 日报 — OpenClaw</div>
+        <div class="card-desc">OpenClaw/OpenClaw 项目每日动态，智能筛选重要更新，全中文</div>
+        <span class="card-tag tag-report">日报</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>由 <a href="https://github.com/HKUDS/nanobot">NanoBot 🐈</a> 协助构建和维护 · 共 8 个项目</p>
+</footer>
+
+</div>
+</body>
+</html>
