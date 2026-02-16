@@ -41,6 +41,19 @@ header p {
   font-size: 1.15em; font-weight: 600; color: #888;
   margin-bottom: 16px; padding-left: 4px;
   display: flex; align-items: center; gap: 8px;
+  cursor: pointer; user-select: none;
+  transition: color 0.2s ease;
+}
+.category-title:hover {
+  color: #bbb;
+}
+.category-title .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.7em;
+}
+.category.collapsed .category-title .arrow {
+  transform: rotate(-90deg);
 }
 .category-title::after {
   content: ''; flex: 1; height: 1px;
@@ -50,6 +63,14 @@ header p {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 16px;
+  max-height: 2000px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+.category.collapsed .grid {
+  max-height: 0;
+  opacity: 0;
 }
 .card {
   background: rgba(255,255,255,0.04);
@@ -129,7 +150,7 @@ footer a:hover { text-decoration: underline; }
 
 <!-- 互动游戏 -->
 <div class="category">
-  <div class="category-title">🎮 互动游戏</div>
+  <div class="category-title"><span class="arrow">▼</span>🎮 互动游戏</div>
   <div class="grid">
     <a class="card" href="https://hbzhangmao.github.io/angry-birds/" target="_blank">
       <div class="card-icon icon-red">🐦</div>
@@ -152,7 +173,7 @@ footer a:hover { text-decoration: underline; }
 
 <!-- 学习教育 -->
 <div class="category">
-  <div class="category-title">📚 学习教育</div>
+  <div class="category-title"><span class="arrow">▼</span>📚 学习教育</div>
   <div class="grid">
     <a class="card" href="https://hbzhangmao.github.io/poetry-game/" target="_blank">
       <div class="card-icon icon-green">📖</div>
@@ -175,7 +196,7 @@ footer a:hover { text-decoration: underline; }
 
 <!-- 可视化 -->
 <div class="category">
-  <div class="category-title">🌌 可视化</div>
+  <div class="category-title"><span class="arrow">▼</span>🌌 可视化</div>
   <div class="grid">
     <a class="card" href="https://hbzhangmao.github.io/solar-system/" target="_blank">
       <div class="card-icon icon-blue">🪐</div>
@@ -190,7 +211,7 @@ footer a:hover { text-decoration: underline; }
 
 <!-- 技术文档 -->
 <div class="category">
-  <div class="category-title">📄 技术文档</div>
+  <div class="category-title"><span class="arrow">▼</span>📄 技术文档</div>
   <div class="grid">
     <a class="card" href="https://hbzhangmao.github.io/nanobot-tutorial/" target="_blank">
       <div class="card-icon icon-cyan">🐈</div>
@@ -205,7 +226,7 @@ footer a:hover { text-decoration: underline; }
 
 <!-- 数据报告 -->
 <div class="category">
-  <div class="category-title">📊 数据报告</div>
+  <div class="category-title"><span class="arrow">▼</span>📊 数据报告</div>
   <div class="grid">
     <a class="card" href="https://hbzhangmao.github.io/github-daily-report/" target="_blank">
       <div class="card-icon icon-yellow">📰</div>
@@ -255,5 +276,12 @@ footer a:hover { text-decoration: underline; }
 </footer>
 
 </div>
+<script>
+document.querySelectorAll('.category-title').forEach(function(title) {
+  title.addEventListener('click', function() {
+    this.parentElement.classList.toggle('collapsed');
+  });
+});
+</script>
 </body>
 </html>
